@@ -77,6 +77,10 @@ Used in the sigma-delta modulator feedback loop. Compares integrated signal agai
 ### Integrator
 Accumulates difference between temperature signal and feedback, forming the core of the sigma-delta converter.
 
+## Layout
+
+This repository contains only the circuit blocks of the chip. Feel free to contact the owner of the repository to request layouts of specific circuit blocks.
+
 ## Reference
 
 This implementation is based on concepts from the IEEE paper:
