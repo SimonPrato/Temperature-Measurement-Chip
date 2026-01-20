@@ -1,6 +1,6 @@
 # CMOS Temperature Measurement Chip
 
-A low-power CMOS temperature sensor with digital output, designed in Xschem for standard CMOS process technology.
+A low-power CMOS temperature sensor with digital output, designed in Xschem using open-source PDKs (IHP SG13G2 and SkyWater SKY130).
 
 ## Project Overview
 
@@ -79,8 +79,10 @@ The circuit uses substrate bipolar transistors available in standard CMOS proces
 
 ### Prerequisites
 - Xschem schematic editor
-- SPICE-compatible simulator (ngspice, LTspice, etc.)
-- Standard CMOS PDK (Process Design Kit)
+- ngspice or compatible SPICE simulator
+- **IHP SG13G2 PDK** (130nm BiCMOS process) - for bipolar transistor support
+- **SkyWater SKY130 PDK** (130nm CMOS process) - alternative implementation
+- Process Design Kit installation and configuration
 
 ### Running Simulations
 
@@ -135,8 +137,12 @@ The system requires two-point calibration to achieve target accuracy:
 
 ## Implementation Notes
 
-### Substrate Bipolars
-Standard CMOS processes provide vertical PNP transistors (substrate bipolars) with collectors connected to substrate. This constraint requires careful circuit topology to ensure proper operation.
+### Process Technology
+**IHP SG13G2:** The IHP 130nm BiCMOS process provides high-quality bipolar transistors alongside standard CMOS devices, making it ideal for precision analog designs like bandgap references and temperature sensors.
+
+**SkyWater SKY130:** The SkyWater 130nm process offers substrate PNP transistors (parasitic vertical bipolars) with collectors inherently connected to substrate. While these devices have lower performance than dedicated bipolars, they are sufficient for temperature sensing applications with proper circuit design.
+
+Both PDKs are open-source and freely available, enabling accessible analog IC design and fabrication.
 
 ### Chopper Technique
 Offset compensation is critical for accurate temperature measurement. The chopper technique modulates the input signal, amplifies it, then demodulates to remove low-frequency offset and 1/f noise.
@@ -162,4 +168,7 @@ Simon Prato
 ## Acknowledgments
 
 - Original research by Bakker and Huijsing on micropower temperature sensors
+- IHP for the open-source SG13G2 BiCMOS PDK
+- Google and SkyWater for the open-source SKY130 PDK
 - Xschem community for excellent open-source EDA tools
+- Open-source silicon community for making advanced IC design accessible
